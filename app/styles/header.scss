@@ -1,0 +1,38 @@
+@import 'colours';
+
+.header {
+    background: $black;
+    color: white;
+    position: fixed;
+    top: 0;
+    z-index: 500;
+    width: 100%;
+    box-shadow: 0 3px 15px $black;
+}
+
+.logo {
+    width: 20%;
+    float: left;
+    text-align: center;
+
+    @media only screen and (max-width: 768px) {
+        width: 100%;
+    }
+
+    h2.titletag {
+
+        a {
+            font-size: 30px;
+            color: #fff;
+            letter-spacing: -1px;
+            transition: all 0.2s;
+            border-bottom: 0px solid transparent;
+
+            &:hover,
+            &:focus {
+                color: $yellow;
+                border-bottom: 3px solid #fff;
+            }
+        }
+    }
+}
