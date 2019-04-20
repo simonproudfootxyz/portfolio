@@ -21,6 +21,11 @@ var conversationStarter = {
             var repliesSet = data.filter(set => set.data.children[0].kind !== 't3');
             var replies = repliesSet.map(set => set.data.children)[0];
             conversationStarter.replies = replies;
+        },
+        fetchRandomThread: function(){
+            var randomIndex = Math.floor(Math.random() * (conversationStarter.threads.length - 1));
+            conversationStarter.replies = [];
+            return conversationStarter.threads[randomIndex];
         }
     },
     restService: {
@@ -46,6 +51,7 @@ var conversationStarter = {
                 let info = reply.data;
                 return `<li class="reply">${info.author}: ${info.body}</li>`
             }).join('');
+            return elements;
         }
     }
 }
