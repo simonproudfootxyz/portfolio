@@ -218,10 +218,6 @@ article.homepage {
 
 article.homepage a {
     border-bottom: 2px solid transparent;
-    display: block;
-    max-height: 140px;
-    overflow: hidden;
-    margin-bottom: 10px;
 }
 
 article.homepage a:focus,
@@ -245,25 +241,36 @@ h2.featuredtitle {
     font-size: 25px;
     letter-spacing: 7px;
     text-align: center;
-    color: #333
+    color: #333;
 }
 
-.portfolio__item img {
-    margin-bottom: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, .3)
+.portfolio__item {
+    
+    img {
+        margin-bottom: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+    }
+
+    a {
+        display: block;
+        margin-bottom: 10px;
+        max-height: 140px;
+        overflow: hidden;
+    }
+
+    ul.description {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        font-size: 12px;
+        line-height: 18px;
+
+        li:nth-of-type(2) {
+            font-weight: 700;
+        }
+    }
 }
 
-.portfolio__item ul.description {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    font-size: 12px;
-    line-height: 18px
-}
-
-.portfolio__item ul.description li:nth-of-type(2) {
-    font-weight: 700
-}
 
 .portfolio__item .technology {
     color: $red
