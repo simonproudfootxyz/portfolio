@@ -1,0 +1,107 @@
+<!doctype html>
+<html class="no-js" lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Spice Challenge</title>
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <!-- Place favicon.ico in the root directory -->
+    <link href="https://fonts.googleapis.com/css?family=EB+Garamond:600|Lato:900" rel="stylesheet">
+    <!-- build:css styles/main.css -->
+    <link rel="stylesheet" href="../styles/main.css">
+    <!-- endbuild -->
+    <!-- build:js scripts/modernizr.js -->
+    <script src="scripts/modernizr.js"></script>
+    <!-- Load Stripe.js on your website. -->
+    <script src="https://js.stripe.com/v3"></script>
+    <!-- endbuild -->
+  </head>
+  <body class="spice-challenge">
+    <!--[if IE]>
+      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <main class="contenthere" role="main">
+      <!-- section -->
+      <section class="wrapper">
+      <p id="headline" class="headline">So you like it spicy, huh?</p>
+        <!-- article -->
+        <article class="homepage" id="post-4">
+        <div class="featuredwork">
+          <h2 class="featuredtitle">Sign up</h2>
+  
+          <div class="section clearfix text-center">
+            <script src="https://static.airtable.com/js/embed/embed_snippet_v1.js"></script><iframe class="airtable-embed airtable-dynamic-height" src="https://airtable.com/embed/shrWyvj4RcOqYUKTQ?backgroundColor=gray" frameborder="0" onmousewheel="" width="100%" height="1097" style="background: transparent; border: 1px solid #ccc;"></iframe>
+
+            <!-- Create a button that your customers click to complete their purchase. Customize the styling to suit your branding. -->
+            <button
+            style="background-color:#6772E5;color:#FFF;padding:8px 12px;border:0;border-radius:4px;font-size:1em"
+            id="checkout-button-sku_FBJWzIv5GApq94"
+            role="link"
+            >
+            Pay Registration
+            </button>
+
+            <div id="error-message"></div>
+
+
+          </div>
+          
+  
+        </div>
+  
+        </article>
+        <!-- /article -->
+      </section>
+      <!-- /section -->
+  
+    </main>
+    
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+    <script>
+      (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+      function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+      e.src='https://www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+      ga('create','UA-XXXXX-X');ga('send','pageview');
+    </script>
+    <!-- build:js scripts/vendor.js -->
+    <script type="text/javascript" src="/node_modules/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- endbuild -->
+    <!-- build:js scripts/main.js -->
+    <script src="scripts/main.js"></script>
+    <script>
+    var stripe = Stripe('pk_live_DRzuJXAm2ruHadbxDgxCQd9B00lMiMKj9D');
+
+    var checkoutButton = document.getElementById('checkout-button-sku_FBJWzIv5GApq94');
+    checkoutButton.addEventListener('click', function () {
+        // When the customer clicks on the button, redirect
+        // them to Checkout.
+        stripe.redirectToCheckout({
+        items: [{sku: 'sku_FBJWzIv5GApq94', quantity: 1}],
+
+        // Do not rely on the redirect to the successUrl for fulfilling
+        // purchases, customers may not always reach the success_url after
+        // a successful payment.
+        // Instead use one of the strategies described in
+        // https://stripe.com/docs/payments/checkout/fulfillment
+        successUrl: 'https://proudfeet.io/success',
+        cancelUrl: 'https://proudfeet.io/canceled',
+        })
+        .then(function (result) {
+        if (result.error) {
+            // If `redirectToCheckout` fails due to a browser or network
+            // error, display the localized error message to your customer.
+            var displayError = document.getElementById('error-message');
+            displayError.textContent = result.error.message;
+        }
+        });
+    });
+    </script>
+    <!-- endbuild -->
+  </body>
+</html>

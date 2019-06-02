@@ -45,6 +45,10 @@ input:focus {
     padding: 0 10px
 }
 
+.text-center {
+    text-align: center;
+}
+
 .nav {
     float: right
 }
@@ -145,7 +149,7 @@ h1.blogtitle {
 }
 
 main.contenthere {
-    background: url(../images/whiteWall.png)
+    background: url(../images/whiteWall.png);
 }
 
 h1.pagetitle {
@@ -232,7 +236,12 @@ article.homepage p a {
 .featuredwork {
     padding: 70px 0;
     font-family: Lato, Helvetica, Arial, sans-serif;
-    border-top: 2px solid rgba(0, 0, 0, .1)
+    border-top: 2px solid rgba(0, 0, 0, .1);
+
+    body.spice-challenge & {
+        padding-top: 0;
+        border-top: none;
+    }
 }
 
 h2.featuredtitle {
